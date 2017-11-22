@@ -25,7 +25,15 @@
                 });
         }
 
+        service.deleteCategory = function (id){
+            return $http({
+                url: '/api/category/' + id,
+                method: 'DELETE',                
+                });
+        }
+
         service.getAllCategories = function (searchString){
+            console.log("searchString="+searchString);
             return $http({
                 url: '/api/category',
                 method: 'GET',

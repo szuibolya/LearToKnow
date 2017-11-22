@@ -12,8 +12,9 @@
             $rootScope.function = "new";
         }
 
-        $scope.search = function(formData){
-            
+        $scope.doSearch = function(){
+            var stateLocation =  $state.current.name;
+            $state.go(stateLocation, {searchString: $scope.searchString});
         }
 
         function getTitle(){

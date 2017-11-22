@@ -103,11 +103,13 @@
                 return;
             }
 
-          /*  store.delCategory(new Category(category.title, category.description), (newCategory) => {
-                response.status(201).json(newCategory);
-            }, (error) => {
-                response.status(500).send(error);
-            });*/
+            store.delCategory(id, (error) => {
+                if(error){
+                    response.status(500).send(error);
+                }else{
+                    response.status(201).json("Removed succesfully");
+                }
+            });
     }
     
 
@@ -115,7 +117,7 @@
     apiRouter.get(apiRoot + '/:id', getCategoryById);
     apiRouter.post(apiRoot, createCategory);
     apiRouter.put(apiRoot + '/:id', modifyCategory);
-    apiRouter.delete(apiRoot, deleteCategory);
+    apiRouter.delete(apiRoot + '/:id', deleteCategory);
 
     log.info('Categories API initialized.');
     module.exports = apiRouter;

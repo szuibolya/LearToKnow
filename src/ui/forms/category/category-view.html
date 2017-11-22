@@ -9,7 +9,10 @@
                       ng-submit="catCtrl.submit(formCategory)">
                      <input type="text" name="name" placeholder="name ..." ng-model="catCtrl.editCategory.name" />
                      <textarea type="text" name="description" placeholder="description ... "  ng-model="catCtrl.editCategory.description"/>
-                     <button type="submit" class="submit-button">Save</button>
+                     <section class="button-group">
+                        <button type="button" class="cancel-button" ng-click="catCtrl.cancel()" >Cancel</button>
+                        <button type="submit" class="submit-button">Save</button>
+                     </section>
                 </form> 
             </div>
         </section>
@@ -41,8 +44,10 @@
                                    >{{foregroundcolor.title}}</option>
                         </select>
                     </section>
-                    
-                    <div><button type="submit" class="submit-button">Save</button></div> 
+                    <section class="button-group">
+                        <button type="button" class="cancel-button" ng-click="catCtrl.cancel()" >Cancel</button>
+                        <button type="submit" class="submit-button">Save</button>
+                   </section>
                 </form>
             </div>
         </section>
@@ -57,9 +62,8 @@
             <div class="edit" ng-click="catCtrl.onEdit(category)">
                <span class="fa fa-pencil"></span>
             </div>
-            <div class="checked">
-              <span class="fa fa-check"></span>
-                {{ category.checked }}
+            <div class="del"  ng-click="catCtrl.onDelete(category)">
+              <span class="fa fa-close"></span>               
             </div>
             <div class="testout" >
                 <span class="fa fa-exclamation"></span> Testout

@@ -13,13 +13,13 @@
         // app routes
         $stateProvider
             .state('home', {
-                url: '/',
+                url: '/?searchString',
                 templateUrl: 'forms/category/category-view.html',
                 controller: 'categoryController',
                 controllerAs: 'catCtrl'
             })
             .state('lesson', {
-                url: '/lesson',
+                url: '/lesson/:id/?searchString',
                 templateUrl: 'forms/lesson/lesson-view.html',
                 controller: 'lessonController',
                 controllerAs: 'lessonCtrl'

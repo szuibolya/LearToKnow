@@ -16,8 +16,8 @@
                 <a class="lesson-button" ui-sref="lesson"> <span class="fa fa-plus"></span> lessons </a>
                 <a class="card-button" ui-sref="card"> <span class="fa fa-plus"></span> cards </a>
             </div>
-            <form name="searchForm" class="search-form">
-              <input type="text" placeholder="searching..." class="search-input">
+            <form name="searchForm" class="search-form" ng-submit="doSearch()">
+              <label>{{searchString}}</label><input type="text" placeholder="searching..." class="search-input" ng-model="searchString">
             </form>
         </header>
         <ui-view></ui-view>

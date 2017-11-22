@@ -1,0 +1,10 @@
+# NodeJS Modules
+node_modules
+
+# Generated
+*.css
+db
+
+# Logs
+logs/
+*.log

@@ -26,12 +26,12 @@ nodemon index.js
   There are three levels to collect your datas for learning
 * __categories__: in this level you can organise your datas by the main properties for example: German B2 Exam words, Geograpy themes, etc.
   * __lessons__: in this level you can add subthemes to your categories for example: Familie, Haushalt,Umwelt to German B2 Exam words
-   * __cards__:in this level you can add the cards for making test. There are different type of Cards
+   * __cards__: in this level you can add the cards for making test. There are different type of Cards
     * _TRANSLATE_: normal test - you see a word and you should type it's translation
     * _DICTIONARY_: you can see a definition of a word and you should type the word
     * _GAP-FILL_: there are some missing word in the sentence that you see and you should type the missing words
     * _MULTI-CHOICE_: you can see a sentence with a gap and three possible answers. You should choose the right answer
-    * _QUESTIONING_:it is very similar to _DICTIONARY_, but you can see a word and you should say the definition of the word. It should check yourself
+    * _QUESTIONING_: it is very similar to _DICTIONARY_, but you can see a word and you should say the definition of the word. It should check yourself
 The tests will be checked and the result of the tests appears in the box of the categories, lessons.
 
 You can load the lessons level if you click on the upper side of the category box

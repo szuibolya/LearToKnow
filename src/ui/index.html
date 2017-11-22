@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html ng-app="learnApp" >
+    <head>
+        
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>LearnToKnow Application</title>    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">    
+    </head>
+    <body>
+        <header ng-controller="searchController">
+            <div class="logo-group haho" >
+                <div class="logo">LearnToKnow</div>
+                <div class="new-button" ng-click="newClick()"> <span class="fa fa-plus"></span> New </div>
+                <a class="lesson-button" ui-sref="lesson"> <span class="fa fa-plus"></span> lessons </a>
+                <a class="card-button" ui-sref="card"> <span class="fa fa-plus"></span> cards </a>
+            </div>
+            <form name="searchForm" class="search-form">
+              <input type="text" placeholder="searching..." class="search-input">
+            </form>
+        </header>
+        <ui-view></ui-view>
+        <footer ng-if="iserror" class="footer">
+            <div id="error-msg"></div>
+        </footer>
+        <script src="lib/jquery-3.2.1.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angular-ui-router/0.4.2/angular-ui-router.min.js"></script>
+        <script src="app.js"></script>
+        <script src="forms/category/category-controller.js"></script>
+        <script src="forms/search-controller.js"></script>
+        
+        <script src="forms/lesson/lesson-controller.js"></script>
+        <script src="forms/card/card-controller.js"></script>
+            <script src="entity/category.js"></script>
+            <script src="entity/style.js"></script>
+            <script src="entity/lesson.js"></script>
+            <script src="entity/card.js"></script>
+            <script src="entity/cardtype.js"></script>
+            <script src="apiservices/api.services.js"></script>
+        </body>
+    </body>
+</html>

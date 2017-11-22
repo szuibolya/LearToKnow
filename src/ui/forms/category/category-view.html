@@ -1,0 +1,71 @@
+
+<div ng-controller="categoryController" >
+        <section><h3>Categories</h3></section>
+        <section ng-show="isAdd">
+            <div class="new-object add-section">
+                <div class="new title" > {{ functionTitle }} </div>
+                <form name="formCategory"
+                      novalidate
+                      ng-submit="catCtrl.submit(formCategory)">
+                     <input type="text" name="name" placeholder="name ..." ng-model="catCtrl.editCategory.name" />
+                     <textarea type="text" name="description" placeholder="description ... "  ng-model="catCtrl.editCategory.description"/>
+                     <button type="submit" class="submit-button">Save</button>
+                </form> 
+            </div>
+        </section>
+        <section ng-show="isEdit">
+            <div class="edit-object add-section {{catCtrl.editCategory.style.cardBackGroundColorClass}} {{catCtrl.editCategory.style.cardForeGroundColorClass}}">
+                <div class="edit title" > {{ functionTitle }} </div>
+                <form name="formEditCategory"
+                      novalidate
+                      ng-submit="catCtrl.submitEdition(formEditCategory)">
+                     <label>Name</label>
+                     <input type="text" name="name" placeholder="name ..." ng-model="catCtrl.editCategory.name" />
+                     <label>Description</label>
+                     <textarea type="text" name="description" placeholder="description ... "  ng-model="catCtrl.editCategory.description"/>
+                     <section class="select-group-item">
+                        <label>Background Color</label>
+                        <select ng-model="catCtrl.editCategory.style.cardBackGroundColor" 
+                                class="color-select {{catCtrl.editCategory.style.cardBackGroundColorClass}}"
+                                ng-change="catCtrl.changeColor()">
+                            <option ng-repeat="backgroundcolor in catCtrl.backgroundColors" 
+                                    class="{{backgroundcolor.class}}">{{backgroundcolor.title}}</option>
+                        </select>
+                    </section>
+                    <section class="select-group-item">
+                        <label>Foreground Color</label>
+                        <select ng-model="catCtrl.editCategory.style.cardForeGroundColor" 
+                                class="color-select black-foreground white"
+                                ng-change="catCtrl.changeColor()">
+                            <option ng-repeat="foregroundcolor in catCtrl.foregroundColors" 
+                                   >{{foregroundcolor.title}}</option>
+                        </select>
+                    </section>
+                    
+                    <div><button type="submit" class="submit-button">Save</button></div> 
+                </form>
+            </div>
+        </section>
+        <section  class="tile-section">
+        <div ng-repeat="category in catCtrl.categories" class="tile  {{category.style.cardBackGroundColorClass}} {{category.style.cardForeGroundColorClass}}">
+          <div class="category title" > {{$index+1 }} {{ category.name }} </div>
+          <div class="category info" >
+            <div class="tooltip">
+                <span class="fa fa-question"></span>
+                <span class="tooltiptext">{{ category.description }}</span>
+            </div>
+            <div class="edit" ng-click="catCtrl.onEdit(category)">
+               <span class="fa fa-pencil"></span>
+            </div>
+            <div class="checked">
+              <span class="fa fa-check"></span>
+                {{ category.checked }}
+            </div>
+            <div class="testout" >
+                <span class="fa fa-exclamation"></span> Testout
+            </div>
+          </div>
+      </div>
+      </section>
+      </div>
+

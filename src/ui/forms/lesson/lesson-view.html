@@ -1,0 +1,34 @@
+      <div ng-controller="lessonController" >
+            <section><h3>Lessons of {{category.name}}</h3></section>
+            <section ng-show="isAdd">
+                <div class="new-object" class="add-section">
+                    <div class="new title" > {{ functionTitle }} </div>
+                    <form name="formLesson"
+                    >
+                     <input type="text" name="name" placeholder="name ..."  />
+                     <textarea type="text" name="description" placeholder="description ... " />
+                     <div><button type="submit" class="submit-button">Save</button><div> 
+                </div>
+            </section>
+            <section  class="tile-section">
+            <div ng-repeat="lesson in lessons" class="tile  {{lesson.style.cardBackGroundColor}}">
+              <div class="lesson title" > {{$index+1 }} {{ lesson.name }} </div>
+              <div class="lesson info" >
+                    <div class="tooltip">
+                       <span class="fa fa-question"></span>
+                       <span class="tooltiptext">{{ lesson.description }}</span>
+                   </div>
+                  <div class="edit">
+                   <span class="fa fa-pencil"></span>
+                  </div>
+                  <div class="checked">
+                  <span class="fa fa-check"></span>
+                    {{ lesson.checked }}
+                    </div>
+                    <div class="testout" >
+                        <span class="fa fa-exclamation"></span> Testout
+                    </div>
+              </div>
+          </div>
+          </section>
+          </div>

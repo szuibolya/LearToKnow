@@ -1,0 +1,37 @@
+(function () {
+    'use strict';
+
+    angular
+        .module("learnApp", ['ui.router'])
+        .config(config)
+        .run(run);
+
+    function config($stateProvider, $urlRouterProvider) {
+        // default route
+        $urlRouterProvider.otherwise("/");
+
+        // app routes
+        $stateProvider
+            .state('home', {
+                url: '/',
+                templateUrl: 'forms/category/category-view.html',
+                controller: 'categoryController',
+                controllerAs: 'catCtrl'
+            })
+            .state('lesson', {
+                url: '/lesson',
+                templateUrl: 'forms/lesson/lesson-view.html',
+                controller: 'lessonController',
+                controllerAs: 'lessonCtrl'
+            })
+            .state('card', {
+                url: '/card',
+                templateUrl: 'forms/card/card-view.html',
+                controller: 'cardController',
+                controllerAs: 'cardCtrl'
+            });
+    }
+
+    function run() {
+    }
+})();

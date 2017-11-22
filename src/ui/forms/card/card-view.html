@@ -1,0 +1,33 @@
+<div ng-controller="cardController" >
+        <section><h3>Cards of {{lesson.name}}</h3></section>
+        <section ng-show="isAdd">
+            <div class="new-object" class="add-section">
+                <div class="new title" > {{ functionTitle }} </div>
+                <form name="formCard"
+                >
+                 <input type="text" name="name" placeholder="name ..."  />
+                 <textarea type="text" name="help" placeholder="help ... " />
+                 <div><button type="submit" class="submit-button">Save</button><div> 
+            </div>
+        </section>
+        <section  class="tile-section">
+        <div ng-repeat="card in cards" class="card tile">
+          <div class="card title" >  {{ vm.replaceXXX(card.question) }} </div>
+          <div class="card title" >  Right answer: {{ card.answer }} </div>
+          <div ng-if="vm.isMulti(card.typeOfCard)" class="card-title" >
+              <span>  A: {{ card.answerA }}  </span>
+              <span>  B: {{ card.answerB }}  </span>
+              <span>  C: {{ card.answerC }}  </span>
+            </div>
+          <div class="card info" >
+                
+              <div class="edit">
+               <span class="fa fa-pencil  {{ card.typeOfCard | lowercase }}"></span>
+              </div>
+              <div class="cardtype">
+                    <span class="fa fa-th-large {{ card.typeOfCard | lowercase }}"></span> {{card.typeOfCard}}
+              </div>
+          </div>
+      </div>
+      </section>
+      </div>

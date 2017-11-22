@@ -1,0 +1,291 @@
+* {
+    box-sizing:border-box;
+    border: 1px dashed black;
+}
+
+body {
+    font-family: "sans-serif";
+    font-weight: "bold";
+    max-width: 1000px;
+    background-color: #FFF;
+}
+
+header {
+    height: 50px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: lightseagreen;
+    align-items: middle;
+    margin: 10px 0px;
+
+}
+
+.logo-group {
+    display: inline-flex;
+    justify-content: flex-start; 
+    align-items: baseline;
+}
+
+.logo {
+    font-family: "sans-serif";
+    font-weight: "bold";
+    font-size: 16px;
+    color: white;
+    padding: 10px;
+    margin: 5px 5px 10px 5px;
+}
+
+.new-button {
+    background-color: lightseagreen;
+    color: white;
+    font-size: 12px;
+    border: 1px solid white;
+    border-radius: 5px;
+    word-wrap: none;
+    padding: 5px;
+    margin: 5px 5px 10px 5px;
+    cursor: pointer;
+}
+
+.search-input {
+    padding: 5px;
+    margin: 10px 5px 8px 5px;
+    min-width: 50px;
+    max-width:100px;
+}
+
+.tile-section {
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+   justify-content: flex-start;
+      
+}
+
+.tile{
+    background-color: green;
+    color: white;
+    font-size: 16px;
+    min-width: 300px;
+    max-width: 500px;
+    margin: 10px;
+    box-shadow: 0px 0px 5px 5px #CCC; 
+    border-radius:10px;
+}
+.title{
+    margin:15px;
+}
+.info {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    font-size: 12px;
+    padding: 10px 0px;
+}
+
+.edit:hover,.checked:hover,.testout:hover{
+   cursor: pointer;
+}
+
+
+.new-object,.edit-object {
+    background-color: grey;
+    color: white;
+    padding: 15px;
+    min-width: 300px;
+    max-width: 500px;
+    margin: 10px;
+    box-shadow: 0px 0px 5px 5px #CCC; 
+    border-radius:10px;
+}
+.new-object>form,.edit-object>form{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0px;
+}
+.new-object>form>input,.new-object textarea,.edit-object>form>input,.edit-object textarea,.edit-object select {
+    width :100%;
+    margin: 10px;
+    padding: 10px 10px;
+}
+
+.new-object textarea,.edit-object textarea {
+    height: 100px;
+}
+.new-object button,.edit-object button {
+    padding: 5px 10px 8px 10px;
+    height: 40px;
+    width:100px;
+    margin: 10px;
+    background-color: white;
+    color: lightseagreen;
+    font-size: 14px;
+    text-align: center;
+    border: 1px solid white;
+    border-radius: 5%;
+
+}
+.edit-object label{
+    padding:0px;
+    margin:0px;
+    font-size:12px;
+    width:100%;   
+}
+.edit-object .select-group-item{
+    display: flex;
+    flex-direction: row; 
+    align-items: baseline;
+    width:100%;   
+}
+.select-group-item>label,.select-group-item>select {
+    width:50%;
+    padding:5px; 
+}
+.tooltip {
+    position:relative;
+}
+.tooltiptext {
+    position: absolute;
+    visibility: hidden;
+    width: 200px;
+    background-color: antiquewhite;
+    color: darkslategrey;
+    text-align: left;
+    border-radius: 6px;
+    padding: 5px 5px;
+   
+    z-index: 100;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -40px;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 25%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: antiquewhite transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+.green{
+    background-color: #0CA947;/*rgb(114, 190, 104), chartreuse, darkgreen  forestgreen*/
+}
+.blue{
+    background-color: #106E92;/*dodgerblue,deepskyblue, cornflowerblue*/
+}
+.red {
+    background-color: #E93611;/*crimson; firebrick,red,darkred*/
+}
+.yellow{
+    background-color: #E98111;
+}
+.pink {
+    background-color: fuchsia;/*darlorchid, deeppink*/
+}
+
+.green-pastel{
+    background-color: #30B260;
+}
+.blue-pastel{
+    background-color: #2E7C9A;
+}
+.red-pastel {
+    background-color: #F56142;
+}
+.yellow-pastel{
+    background-color: #F59F42;
+}
+
+.green-light{
+    background-color: #53C370;
+}
+.blue-light{
+    background-color: #4E94AE;
+}
+.red-light {
+    background-color: #FF866C;
+}
+.yellow-light{
+    background-color: #FFB96D;
+}
+
+.white-foreground {
+    color: #FFF;
+}
+.black-foreground {
+    color: #000;
+}
+.white {
+    background-color: #FFF;
+}
+.black {
+    background-color: #000;
+}
+.card{
+    background-color: rgb(240, 232, 200);
+    color: black;
+    text-align: left;
+}
+.card-tile {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: space-between;
+    padding: 15px;
+}
+.card-title {
+    padding: 15px;
+}
+.card .info {
+    justify-content: flex-start;
+    padding: 15px;
+}
+.cardtype {
+    padding-left: 5px;
+}
+
+.dictionary {
+    color: rgb(30, 114, 187);
+}
+.gap-fill {
+    color: rgb(206, 60, 219);
+}
+.multi-choice {
+    color: rgb(29, 204, 96);
+}
+.translate {
+    color: rgb(204, 29, 81);
+}
+.questioning {
+    color: rgb(204, 99, 29);
+}
+
+footer {
+    min-height:100px;
+    max-height:300px;
+    position: absolute;
+    bottom: 0;
+    left:0;
+    
+}
+#error-msg {
+   background-color: rgb(221, 103, 128);
+   box-shadow: 0px 0px 5px 5px rgb(221, 103, 128);
+}

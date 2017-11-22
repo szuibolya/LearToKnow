@@ -23,6 +23,23 @@ Build the project (default destination is `dist`):
 nodemon index.js
 ```
 ### Business Logic
+  There are three levels to collect your datas for learning
+* __categories__: in this level you can organise your datas by the main properties for example: German B2 Exam words, Geograpy themes, etc.
+  * __lessons__: in this level you can add subthemes to your categories for example: Familie, Haushalt,Umwelt to German B2 Exam words
+   * __cards__:in this level you can add the cards for making test. There are different type of Cards
+    * _TRANSLATE_: normal test - you see a word and you should type it's translation
+    * _DICTIONARY_: you can see a definition of a word and you should type the word
+    * _GAP-FILL_: there are some missing word in the sentence that you see and you should type the missing words
+    * _MULTI-CHOICE_: you can see a sentence with a gap and three possible answers. You should choose the right answer
+    * _QUESTIONING_:it is very similar to _DICTIONARY_, but you can see a word and you should say the definition of the word. It should check yourself
+The tests will be checked and the result of the tests appears in the box of the categories, lessons.
+
+You can load the lessons level if you click on the upper side of the category box
+You can load the cards level if you click on the top of the lesson box
+You can edit the categories or lessons or cards if you click on the pencil icon in the bottom of the box
+You can see the description of the categories or lessons if you click on the ? icon in the bottom of the box
+You can remove a category or lesson or a card if you click on the x icon in the bottom of the box
+You can start a Test if you click on the !Testout icon in the bottom of the box
 
 ### Structure of the Project
 * __config/default.js__: This configuration will be picked up by the config modul
@@ -31,7 +48,7 @@ nodemon index.js
 * __src/ui__: the files of the client side
   * __apiservices__: client side RestAPi Calls
   * __css__: stylesheets
-  * __entity__: classes for the object of the business logic
+  * __entity__: classes for the objects of the business logic
   * __forms__: AngularJS MVC template files: Views (.html) and it's Controllers (.js)
   * __lib__: JQuery, AngularJS, Font-Awesome downloaded files 
   * __app.js__: this is the client side main runnable file

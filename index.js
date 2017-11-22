@@ -18,7 +18,7 @@
 
     const express       = require('express');
     const bodyParser    = require('body-parser');
-
+  
     //imports the own api-s for the entities 
     //you should write the filename without extension
     const categoryApi   = require('./src/server/api/category/category.api');
@@ -52,7 +52,10 @@
     app.use('/api', categoryApi);
    /* app.use('/api', lessonApi);
     app.use('/api', cardApi);*/
-
+   
+    
+    
+    
 
     //process.on(event, function) it is listening the given event
     //if this event occurs the function fill be called

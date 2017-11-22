@@ -15,13 +15,19 @@
     'use strict';
 
     const log       = require('../../logger/logger');
-    const database  = require('../../database/database');
+    const mongoose  = require('../../database/database');
     let SanitizedCategory       = require('./category.model');
+    
+    //this is a model for the categories Collection
+    const database = mongoose.model('categories', new mongoose.Schema({id:Number, name:String,description:String,checked:Number,
+                style: {cardBackGroundColor:String,cardBackGroundColorClass:String,
+                        cardForeGroundColor:String,cardForeGroundColorClass:String,
+                        cardFontName:String,cardFontSize:Number}}));
 
-    //these will be the methods of the modul
+    //this will be returned with the methods of this modul
     let operations = {};
 
-    //category is the data for insertion
+    //creates a new category: category is the data for insertion
     //onSucces and onError are callback functions
     operations.addCategory = function (category, onSuccess, onError) {
         log.debug('Saving new category...');
@@ -30,7 +36,7 @@
         }
 
         if (!category.id) { category.id = Date.now(); }
-        database.insert(category, (error, newcategory) => {
+        database.create(category, (error, newcategory) => {
             if (error) {
                 onError(error);
                 return;
@@ -41,6 +47,7 @@
         });
     };
 
+    //modifies a category: category is the data for update
     operations.modCategory = function (category, response) {
         log.debug('Update category...');
         if (!(category instanceof SanitizedCategory)) {
@@ -48,14 +55,13 @@
         }
 
         if (!category.id) { category.id = Date.now(); }
-        database.update({ id: category.id} 
-        , 
-        { $set: {name: category.name,
+        database.findOneAndUpdate({ id: category.id}, 
+        {   name: category.name,
             description:category.description,
-            style:category.style}
+            style:category.style
         },
-        {},// this argument was missing
-          response
+        {upsert:true},
+          response //this is the callback function
         );
         
     };

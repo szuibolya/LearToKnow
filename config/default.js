@@ -24,9 +24,10 @@
         paths: roots,
 
         database: {
-            filename: 'db',
-            autoload: true
-        },
+            production: "mongodb://localhost:27017/learn_dev",
+            development: "mongodb://localhost:27017/learn_dev",
+            test: "mongodb://localhost:27017/learn_dev",
+          },
 
         server: {
             port: 3000

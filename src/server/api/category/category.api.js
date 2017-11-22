@@ -63,6 +63,7 @@
                 response.status(500).send(error);
             });
     }
+
     function createCategory(request, response){
         log.debug("createCategory "+request);
             //request.body: this is the data in POST or PUT methods of http
@@ -87,11 +88,11 @@
                 return;
             }
 
-            store.modCategory(new SanitizedCategory(category._id,category.id,category.name, category.description, category.style, category.checked,category.lessons,category.creationDate), (error,numberOfUpdated,docs) => {
+            store.modCategory(new SanitizedCategory(category._id,category.id,category.name, category.description, category.style, category.checked,category.lessons,category.creationDate), (error,docs) => {
                 if(error){
                     response.status(500).send(error);
                 }else{
-                    response.status(201).json(numberOfUpdated);
+                    response.status(201).json(docs);
                 }
             });
     }

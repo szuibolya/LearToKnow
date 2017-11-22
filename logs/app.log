@@ -208,3 +208,10 @@
 {"level":"debug","message":"New category has been successfully saved with id 1511351263464.","timestamp":"2017-11-22T11:47:43.465Z"}
 {"level":"debug","message":"Retrieving every category...","timestamp":"2017-11-22T11:47:43.480Z"}
 {"level":"debug","message":"Found 8 categories.","timestamp":"2017-11-22T11:47:43.480Z"}
+{"level":"debug","message":"apiRoot=/category","timestamp":"2017-11-22T13:15:33.909Z"}
+{"level":"info","message":"Categories API initialized.","timestamp":"2017-11-22T13:15:33.940Z"}
+{"level":"info","message":"Database has been initialized successfully.","timestamp":"2017-11-22T13:15:33.960Z"}
+{"level":"debug","message":"apiRoot=/category","timestamp":"2017-11-22T13:17:18.314Z"}
+{"level":"info","message":"Categories API initialized.","timestamp":"2017-11-22T13:17:18.342Z"}
+{"level":"info","message":"Database has been initialized successfully.","timestamp":"2017-11-22T13:17:18.360Z"}
+{"level":"info","message":"Server started on port 3000 successfully.","timestamp":"2017-11-22T13:17:18.368Z"}

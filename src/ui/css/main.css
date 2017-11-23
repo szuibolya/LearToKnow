@@ -75,7 +75,10 @@ header {
     border-radius:10px;
 }
 .title{
-    margin:15px;
+    display: block;
+    margin: 5px;
+    padding: 10px;
+    text-decoration: none;
 }
 .info {
     display: flex;

@@ -8,7 +8,7 @@
     function searchController($scope,$rootScope,$state) {
         $scope.newClick = function(){
             $rootScope.isAdd = true;  
-            $rootScope.functionTitle = "New" +  getTitle();
+            $rootScope.functionTitle = "New " +  getTitle();
             $rootScope.function = "new";
         }
 
@@ -19,12 +19,10 @@
 
         function getTitle(){
             var hash = location.hash;
-            switch(hash){
-                case '#!/': return 'Category';
-                case '#!/lesson': return 'Lesson';
-                case '#!/card': return 'Card';
-                default: return "";
-            }
+            
+            if (hash == '#!/') return 'Category';
+            if (hash.indexOf('lesson') != -1) return 'Lesson';
+            if (hash.indexOf('card') != -1) return 'Card';
         }
   
     }

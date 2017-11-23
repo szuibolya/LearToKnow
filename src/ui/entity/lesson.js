@@ -1,9 +1,11 @@
-function Lessons (name, description,checked) {
+function Lesson (name, description,checked) {
     this.id;  
+    this.categoryId;
     this.name = name;
-    this.checked = checked==undefined?0:checked;
     this.description = description==undefined?"":description;
+    this.checked = checked==undefined?0:checked;
     this.style = new Style();
+    this.creationDate;
   } 
   
   function getDummyLessonsList(){

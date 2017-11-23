@@ -32,14 +32,15 @@ nodemon index.js
     * _GAP-FILL_: there are some missing word in the sentence that you see and you should type the missing words
     * _MULTI-CHOICE_: you can see a sentence with a gap and three possible answers. You should choose the right answer
     * _QUESTIONING_: it is very similar to _DICTIONARY_, but you can see a word and you should say the definition of the word. It should check yourself
-The tests will be checked and the result of the tests appears in the box of the categories, lessons.
 
-You can load the lessons level if you click on the upper side of the category box
-You can load the cards level if you click on the top of the lesson box
-You can edit the categories or lessons or cards if you click on the pencil icon in the bottom of the box
-You can see the description of the categories or lessons if you click on the ? icon in the bottom of the box
-You can remove a category or lesson or a card if you click on the x icon in the bottom of the box
-You can start a Test if you click on the !Testout icon in the bottom of the box
+###User's guide
+* The tests will be checked and the result of the tests appears in the box of the categories, lessons.
+* You can load the lessons level if you click on the upper side of the category box
+* You can load the cards level if you click on the top of the lesson box
+* You can edit the categories or lessons or cards if you click on the pencil icon in the bottom of the box
+* You can see the description of the categories or lessons if you click on the ? icon in the bottom of the box
+* You can remove a category or lesson or a card if you click on the x icon in the bottom of the box
+* You can start a Test if you click on the !Testout icon in the bottom of the box
 
 ### Structure of the Project
 * __config/default.js__: This configuration will be picked up by the config modul

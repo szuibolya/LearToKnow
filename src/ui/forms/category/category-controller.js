@@ -5,7 +5,7 @@
         .module("learnApp")
         .controller('categoryController', categoryController);
 
-    function categoryController($scope,$rootScope,$stateParams,apiService) {
+    function categoryController($scope,$rootScope,$stateParams,categoryApiService) {
         var catCtrl = this;
         $rootScope.isAdd = false;
         $rootScope.isEdit = false;
@@ -13,10 +13,11 @@
         catCtrl.backgroundColors = getBackgroundColorOptions();
         catCtrl.foregroundColors = getForegroundColorOptions();
         
+        //when the html page loaded
         catCtrl.initController = function(){
             catCtrl.editCategory = new Category();
             //catCtrl.categories = getDummyCategoryList();
-            apiService.getAllCategories($stateParams.searchString)
+            categoryApiService.getAllCategories($stateParams.searchString)
             .then(function(result){
                     catCtrl.categories = result.data;
                 }
@@ -39,10 +40,10 @@
             console.log(catCtrl.editCategory.style.cardBackGroundColor);       
         }
         //when a user clicks on the del (close icon)
-            catCtrl.onDelete = function(category){
+        catCtrl.onDelete = function(category){
             var isremove = window.confirm("Are you sure to remove the "+category.name+" category?");
             if (!isremove) return;
-            apiService.deleteCategory(category.id)
+            categoryApiService.deleteCategory(category.id)
             .then(function (result) {
                 console.log("delete ok");
                 catCtrl.initController();
@@ -73,7 +74,7 @@
             if(!form.$valid) return;
             catCtrl.editCategory.style = new Style();
                       
-            apiService.postCategory(catCtrl.editCategory)
+            categoryApiService.postCategory(catCtrl.editCategory)
             .then(function (result) {
                 console.log("ok");
                 $rootScope.isAdd = false;
@@ -94,7 +95,7 @@
             form.$setDirty();
             if(!form.$valid) return;
                       
-            apiService.putCategory(catCtrl.editCategory)
+            categoryApiService.putCategory(catCtrl.editCategory)
             .then(function (result) {
                 console.log("ok");
                 $rootScope.isEdit = false;

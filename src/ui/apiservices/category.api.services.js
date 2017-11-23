@@ -3,10 +3,10 @@
 
     angular
         .module("learnApp")
-        .factory('apiService', apiService);
+        .service('categoryApiService', categoryApiService);
 
 
-    function apiService($http) {
+    function categoryApiService($http) {
         console.log("apiservice");
         var service = {};
         service.postCategory = function (category){
@@ -38,6 +38,13 @@
                 url: '/api/category',
                 method: 'GET',
                 params: {searchString: searchString}
+                });
+        }
+
+        service.getOneCategory = function(categoryId){
+            return $http({
+                url: '/api/category/' + categoryId,
+                method: 'GET',
                 });
         }
         return service;

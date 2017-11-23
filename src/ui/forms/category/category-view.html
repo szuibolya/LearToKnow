@@ -53,7 +53,7 @@
         </section>
         <section  class="tile-section">
         <div ng-repeat="category in catCtrl.categories" class="tile  {{category.style.cardBackGroundColorClass}} {{category.style.cardForeGroundColorClass}}">
-          <div class="category title" > {{$index+1 }} {{ category.name }} </div>
+          <a ui-sref="lesson({id: category.id})"  class="category title {{category.style.cardForeGroundColorClass}}"  > {{ category.name }} </a>
           <div class="category info" >
             <div class="tooltip">
                 <span class="fa fa-question"></span>

@@ -4,7 +4,7 @@
     angular
         .module("learnApp", ['ui.router'])
         .config(config)
-        .run(run);
+        .run();
 
     function config($stateProvider, $urlRouterProvider) {
         // default route
@@ -19,7 +19,7 @@
                 controllerAs: 'catCtrl'
             })
             .state('lesson', {
-                url: '/lesson/:id/?searchString',
+                url: '/:id/lesson/?searchString',
                 templateUrl: 'forms/lesson/lesson-view.html',
                 controller: 'lessonController',
                 controllerAs: 'lessonCtrl'

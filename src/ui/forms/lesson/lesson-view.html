@@ -1,26 +1,70 @@
       <div ng-controller="lessonController" >
-            <section><h3>Lessons of {{category.name}}</h3></section>
+            <section><h3>Lessons of {{lessonCtrl.category.name}}</h3></section>
             <section ng-show="isAdd">
                 <div class="new-object" class="add-section">
                     <div class="new title" > {{ functionTitle }} </div>
                     <form name="formLesson"
+                        ng-submit="lessonCtrl.submit(formLesson)"
                     >
-                     <input type="text" name="name" placeholder="name ..."  />
-                     <textarea type="text" name="description" placeholder="description ... " />
-                     <div><button type="submit" class="submit-button">Save</button><div> 
-                </div>
+                     <input type="text" name="name" placeholder="name ..."  ng-model="lessonCtrl.editLesson.name"/>
+                     <textarea type="text" name="description" placeholder="description ... "ng-model="lessonCtrl.editLesson.description" />
+                     <section class="button-group">
+                            <button type="button" class="cancel-button" ng-click="lessonCtrl.cancel()" >Cancel</button>
+                            <button type="submit" class="submit-button">Save</button>
+                     </section>
+                    </form> 
+                    </div>
             </section>
-            <section  class="tile-section">
-            <div ng-repeat="lesson in lessons" class="tile  {{lesson.style.cardBackGroundColor}}">
+           
+            <section ng-show="isEdit">
+                <div class="edit-object add-section {{lessonCtrl.editLesson.style.cardBackGroundColorClass}} {{lessonCtrl.editLesson.style.cardForeGroundColorClass}}">
+                    <div class="edit title" > {{ functionTitle }} </div>
+                    <form name="formEditLesson"
+                            novalidate
+                            ng-submit="lessonCtrl.submitEdition(formEditLesson)">
+                            <label>Name</label>
+                            <input type="text" name="name" placeholder="name ..." ng-model="lessonCtrl.editLesson.name" />
+                            <label>Description</label>
+                            <textarea type="text" name="description" placeholder="description ... "  ng-model="lessonCtrl.editLesson.description"/>
+                            <section class="select-group-item">
+                                <label>Background Color</label>
+                                <select ng-model="lessonCtrl.editLesson.style.cardBackGroundColor" 
+                                        class="color-select {{lessonCtrl.editLesson.style.cardBackGroundColorClass}}"
+                                        ng-change="lessonCtrl.changeColor()">
+                                    <option ng-repeat="backgroundcolor in lessonCtrl.backgroundColors" 
+                                            class="{{backgroundcolor.class}}">{{backgroundcolor.title}}</option>
+                                </select>
+                            </section>
+                            <section class="select-group-item">
+                                <label>Foreground Color</label>
+                                <select ng-model="lessonCtrl.editLesson.style.cardForeGroundColor" 
+                                        class="color-select black-foreground white"
+                                        ng-change="lessonCtrl.changeColor()">
+                                    <option ng-repeat="foregroundcolor in lessonCtrl.foregroundColors" 
+                                            >{{foregroundcolor.title}}</option>
+                                </select>
+                            </section>
+                            <section class="button-group">
+                                <button type="button" class="cancel-button" ng-click="lessonCtrl.cancel()" >Cancel</button>
+                                <button type="submit" class="submit-button">Save</button>
+                            </section>
+                </form>
+            </div>
+        </section>
+        <section  class="tile-section">
+            <div ng-repeat="lesson in lessonCtrl.lessons" class="tile  {{lesson.style.cardBackGroundColorClass}} {{lesson.style.cardForeGroundColorClass}}">
               <div class="lesson title" > {{$index+1 }} {{ lesson.name }} </div>
               <div class="lesson info" >
                     <div class="tooltip">
                        <span class="fa fa-question"></span>
                        <span class="tooltiptext">{{ lesson.description }}</span>
                    </div>
-                  <div class="edit">
-                   <span class="fa fa-pencil"></span>
-                  </div>
+                   <div class="edit" ng-click="lessonCtrl.onEdit(lesson)">
+                        <span class="fa fa-pencil"></span>
+                     </div>
+                     <div class="del"  ng-click="lessonCtrl.onDelete(lesson)">
+                       <span class="fa fa-close"></span>               
+                     </div>
                   <div class="checked">
                   <span class="fa fa-check"></span>
                     {{ lesson.checked }}

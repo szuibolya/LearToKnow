@@ -17,7 +17,7 @@
                 <a class="card-button" ui-sref="card"> <span class="fa fa-plus"></span> cards </a>
             </div>
             <form name="searchForm" class="search-form" ng-submit="doSearch()">
-              <label>{{searchString}}</label><input type="text" placeholder="searching..." class="search-input" ng-model="searchString">
+              <input type="text" placeholder="searching..." class="search-input" ng-model="searchString">
             </form>
         </header>
         <ui-view></ui-view>
@@ -38,7 +38,9 @@
             <script src="entity/lesson.js"></script>
             <script src="entity/card.js"></script>
             <script src="entity/cardtype.js"></script>
-            <script src="apiservices/api.services.js"></script>
+            <script src="apiservices/category.api.services.js"></script>
+            <script src="apiservices/lesson.api.services.js"></script>
+            <script src="apiservices/card.api.services.js"></script>
         </body>
     </body>
 </html>

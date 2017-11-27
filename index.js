@@ -23,7 +23,7 @@
     //you should write the filename without extension
     const categoryApi   = require('./src/server/api/category/category.api');
     const lessonApi     = require('./src/server/api/lesson/lesson.api');
-    /*const cardApi       = require('./src/server/api/card/card.api');*/
+    const cardApi       = require('./src/server/api/card/card.api');
 
     //it comes from config/default.js module
     const port          = config.get('server.port');
@@ -51,7 +51,7 @@
     //these api-s we add to the route api
     app.use('/api', categoryApi);
     app.use('/api', lessonApi);
-    /*app.use('/api', cardApi);*/
+    app.use('/api', cardApi);
    
     
     

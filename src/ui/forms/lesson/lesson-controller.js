@@ -5,7 +5,7 @@
         .module("learnApp")
         .controller('lessonController', lessonController);
 
-    function lessonController($scope,$rootScope,$stateParams,categoryApiService,lessonApiService) {
+    function lessonController($scope,$rootScope,$stateParams,$state,categoryApiService,lessonApiService) {
         var lessonCtrl = this;
         $rootScope.isAdd = false;
         $rootScope.isEdit = false;
@@ -118,6 +118,10 @@
             lessonCtrl.editLesson = new Lesson();
         }
 
+        lessonCtrl.loadCards = function(lesson){
+            $state.go('card',{categoryid: lesson.categoryId, lessonid: lesson.id});
+        }
+        
         //you shoul call when you want to write an error message  to the footer 
         function writeError(errorMsg, operation){
             var errmsgdiv = $('#error-msg');

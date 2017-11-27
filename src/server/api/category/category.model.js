@@ -16,7 +16,7 @@
 
     function sanitizeItem(item) {
         return {
-            _id:           item._id,
+            _id:           item._id, 
             id:            item.id,
             checked:       item.checked,
             name:          sanitizer.sanitizeString(item.name),

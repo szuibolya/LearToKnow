@@ -16,7 +16,7 @@
 
     //this is an url
     const apiRoot = '/category';
-    log.debug("apiRoot="+apiRoot);
+   
     //express modul
     const express   = require('express');
 

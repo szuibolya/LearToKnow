@@ -5,7 +5,7 @@
         .module("learnApp")
         .controller('categoryController', categoryController);
 
-    function categoryController($scope,$rootScope,$stateParams,categoryApiService) {
+    function categoryController($scope,$rootScope,$stateParams,$state,categoryApiService) {
         var catCtrl = this;
         $rootScope.isAdd = false;
         $rootScope.isEdit = false;
@@ -108,6 +108,9 @@
             });
             form.$setPristine();
             catCtrl.editCategory = new Category();
+        }
+        catCtrl.loadLesson = function(category){
+             $state.go('lesson',{id:category.id});
         }
 
         //you shoul call when you want to write an error message  to the footer 

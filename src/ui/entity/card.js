@@ -1,6 +1,8 @@
 //cardList: list of Card {typeOfCard, question, answer}
-function Card (typeOfCard, question, answer, answerA, answerB, answerC) {
-    this.id;  
+function Card (categoryId,lessonId,typeOfCard, question, answer, answerA, answerB, answerC) {
+    this.id; 
+    this.categoryId = categoryId; 
+    this.lessonId = lessonId; 
     this.typeOfCard = typeOfCard;
     this.answer = answer;
     this.answerA = answerA==undefined?"":answerA;

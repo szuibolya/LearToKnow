@@ -39,7 +39,7 @@
             if (searchString) {
                 //store is an own nodejs module    
                 store.findInTitle(categoryid,searchString,
-                (lessons) => {
+                (lessons) => { 
                     response.status(200).json(lessons);
                 }, 
                 (error) => {

@@ -53,7 +53,7 @@
         </section>
         <section  class="tile-section">
             <div ng-repeat="lesson in lessonCtrl.lessons" class="tile  {{lesson.style.cardBackGroundColorClass}} {{lesson.style.cardForeGroundColorClass}}">
-              <div class="lesson title" > {{$index+1 }} {{ lesson.name }} </div>
+              <div ng-click="lessonCtrl.loadCards(lesson)" class="lesson title" > {{$index+1 }} {{ lesson.name }} </div>
               <div class="lesson info" >
                     <div class="tooltip">
                        <span class="fa fa-question"></span>

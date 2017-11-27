@@ -25,7 +25,7 @@
                 controllerAs: 'lessonCtrl'
             })
             .state('card', {
-                url: '/card',
+                url: '/:categoryid/:lessonid/card',
                 templateUrl: 'forms/card/card-view.html',
                 controller: 'cardController',
                 controllerAs: 'cardCtrl'

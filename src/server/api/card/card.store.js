@@ -72,7 +72,7 @@
      }
 
      operations.delCard = function(id, onSuccess, onError) {
-        log.debug('Remove card ...');
+        log.debug('Remove card with id:%d...', id);
         if( ! id ){
             onError("Wrong ID for deletion")
         }

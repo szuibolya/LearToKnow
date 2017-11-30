@@ -5,7 +5,7 @@
  * @description
  * This module provides data manipulation operations
  * on Category objects.
- * The underlying store is a persistent NeDB database.
+ * The underlying store is a persistent MongoDB database.
  * Configuration can be found in config/default.js.
  *
  * @see     category.model.js
@@ -43,7 +43,7 @@
                 return;
             }
 
-            log.debug('New category has been successfully saved with id %d.', category.id);
+            log.debug('New category has been successfully saved with id %d.', newcategory.id);
             onSuccess(newcategory);
         });
     };
@@ -55,7 +55,7 @@
             throw new Error('Invalid category to update!');
         }
 
-        if (!category.id) { category.id = Date.now(); }
+        if (!category.id) { throw new Error('Invalid categoryId to update!'); }
         database.findOneAndUpdate({ id: category.id}, 
         {   name: category.name,
             description:category.description,

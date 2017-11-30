@@ -4,10 +4,10 @@
     .service('cardApiService',cardApiService);
     function cardApiService($http){
         var service = {}
-        service.postCard = function(card){
+        service.postCard = function(categoryid,lessonid,card){
           return $http(
               {
-                  url: '/api/card/',
+                  url: '/api/card/'+categoryid+'/'+lessonid,
                   method:'POST',
                   data: card
               }
@@ -29,11 +29,11 @@
                 {
                     url: '/api/card/'+id,
                     method:'DELETE',
-                }
+                } 
             );
         }
     
-        service.getAllCards = function(categoryId,lessonId){
+        service.getAllCards = function(categoryId, lessonId, searchString){
             return $http(
                 {
                     url: '/api/card/'+categoryId + '/'+lessonId,

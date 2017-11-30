@@ -3,8 +3,9 @@ function Card (categoryId,lessonId,typeOfCard, question, answer, answerA, answer
     this.id; 
     this.categoryId = categoryId; 
     this.lessonId = lessonId; 
-    this.typeOfCard = typeOfCard;
-    this.answer = answer;
+    this.typeOfCard = typeOfCard==undefined?getDefaultType():typeOfCard;
+    this.question  = question ==undefined?"":question;
+    this.answer  = answer ==undefined?"":answer;
     this.answerA = answerA==undefined?"":answerA;
     this.answerB = answerB==undefined?"":answerB;
     this.answerC = answerC==undefined?"":answerC;

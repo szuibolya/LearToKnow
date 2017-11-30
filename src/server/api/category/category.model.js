@@ -18,7 +18,6 @@
         return {
             _id:           item._id, 
             id:            item.id,
-            checked:       item.checked,
             name:          sanitizer.sanitizeString(item.name),
             description:   sanitizer.sanitizeString(item.description),
             checked:       item.checked,
@@ -34,15 +33,14 @@
         });
     }
 
-    module.exports = function (_id, id, name, description, style, checked, lessons, creationDate) {
+    module.exports = function (_id, id, name, description, style, checked, creationDate) {
         this._id           = _id,
         this.id            = id,
         this.name          = sanitizer.sanitizeString(name);
         this.description   = sanitizer.sanitizeString(description);
-        this.style         = style;
         this.checked       = checked;
+        this.style         = style,  
         this.creationDate  = creationDate ||  new Date();
-        this.lessons       = lessons == undefined ?[] : sanitizeItems(lessons);
     };
 
 }());

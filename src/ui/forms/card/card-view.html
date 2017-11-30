@@ -1,28 +1,50 @@
 <div ng-controller="cardController" >
         <section><h3>Cards of {{cardCtrl.lesson.name}}</h3></section>
-        <section ng-show="isAdd">
+        <section ng-show="isAdd || isEdit">
             <div class="new-object" class="add-section">
-                <div class="new title" > {{ functionTitle }} </div>
-                <form name="formCard ng-submit="suvmit(cardCtrl.formCard)"
+                <div ng-show="isAdd"class="new title" > {{ functionTitle }} </div>
+                <form name="formCard" ng-submit="cardCtrl.submit(formCard)"
                 >
-                 <input type="text" name="name" placeholder="name ..."  />
-                 <textarea type="text" name="help" placeholder="help ... " />
-                 <div><button type="submit" class="submit-button">Save</button><div> 
+                <label>Question</label>
+                 <textarea type="text" name="question" placeholder="question ..." ng-model="cardCtrl.editCard.question" />
+                 <label>Right answer</label>
+                 <input type="text" name="right-answer" placeholder="right answer ... " ng-model="cardCtrl.editCard.answer" />
+                 <section class="select-group-item">
+                    <label>Type</label>
+                    <select ng-model="cardCtrl.editCard.typeOfCard" 
+                            class="type-select"
+                            ng-change="cardCtrl.changeTypeOfCard()">
+                        <option ng-repeat="type in cardCtrl.types" 
+                                value="{{type}}">{{type}} </option>
+                    </select>
+                 </section>
+                 <section ng-show="cardCtrl.ismulti" class"option-group">
+                    <label>Options</label>
+                    <input type="text" name="answera" placeholder="A answer ... " ng-model="cardCtrl.editCard.answerA" />
+                    <input type="text" name="answerb" placeholder="B answer ... " ng-model="cardCtrl.editCard.answerB" />
+                    <input type="text" name="answerc" placeholder="C answer ... " ng-model="cardCtrl.editCard.answerC" />
+                 </section>
+                 <section class="button-group">
+                    <button type="button" class="cancel-button" ng-click="catCtrl.cancel()" >Cancel</button>
+                    <button type="submit" class="submit-button">Save</button>
+                 </section>
             </div>
         </section>
-        <section  class="tile-section">
+        <section class="tile-section">
         <div ng-repeat="card in cardCtrl.cards" class="card tile">
-          <div class="card title" >  {{ cardCtrl.replaceXXX(card.question) }} </div>
-          <div class="card title" >  Right answer: {{ card.answer }} </div>
+          <div class="card title question" >  {{ cardCtrl.replaceXXX(card.question) }} </div>
+          <div class="card title answer" >  Right answer: {{ card.answer }} </div>
           <div ng-if="cardCtrl.isMulti(card.typeOfCard)" class="card-title" >
-              <span>  A: {{ card.answerA }}  </span>
-              <span>  B: {{ card.answerB }}  </span>
-              <span>  C: {{ card.answerC }}  </span>
+              <span class="answer">  A: {{ card.answerA }}  </span>
+              <span class="answer">  B: {{ card.answerB }}  </span>
+              <span class="answer">  C: {{ card.answerC }}  </span>
             </div>
           <div class="card info" >
-                
-              <div class="edit">
-               <span class="fa fa-pencil  {{ card.typeOfCard | lowercase }}"></span>
+              <div class="edit green-foreground" ng-click="cardCtrl.onEdit(card)">
+               <span class="fa fa-pencil "></span>
+              </div>
+              <div class="del red-foreground"  ng-click="cardCtrl.onDelete(card)">
+                <span class="fa fa-close"></span>               
               </div>
               <div class="cardtype">
                     <span class="fa fa-th-large {{ card.typeOfCard | lowercase }}"></span> {{card.typeOfCard}}

@@ -88,7 +88,8 @@
                 return;
             }
 
-            store.modCategory(new SanitizedCategory(category._id,category.id,category.name, category.description, category.style, category.checked,category.lessons,category.creationDate), (error,docs) => {
+            store.modCategory(new SanitizedCategory(category._id,category.id,category.name, category.description, category.style, category.checked,category.lessons,category.creationDate),
+                              (error,docs) => {
                 if(error){
                     response.status(500).send(error);
                 }else{
@@ -111,7 +112,14 @@
                 }
             });
     }
-    
+    function isTypeOfCard(typeOfCard){
+        if (typeOfCard == "DICTIONARY") return true;
+        if (typeOfCard == "GAP-FILL") return true; 
+        if (typeOfCard == "MULTI-CHOICE") return true;
+        if (typeOfCard == "TRANSLATE") return true;
+        if (typeOfCard == "QUESTIONING") return true;
+        return false;
+    }
 
     apiRouter.get(apiRoot, getAllCategories);
     apiRouter.get(apiRoot + '/:id', getCategoryById);

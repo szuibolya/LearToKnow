@@ -60,7 +60,7 @@ header {
    display: flex;
    flex-direction: row;
    flex-wrap: wrap;
-   justify-content: flex-start;
+   justify-content: space-between;
       
 }
 
@@ -73,6 +73,16 @@ header {
     margin: 10px;
     box-shadow: 0px 0px 5px 5px #CCC; 
     border-radius:10px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.cardtile{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 .title{
     display: block;
@@ -108,13 +118,13 @@ header {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
-    justify-content: center;
-    align-items: center;
-    padding: 10px 0px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 10px 10px;
 }
-.new-object>form>input,.new-object textarea,.edit-object>form>input,.edit-object textarea,.edit-object select {
+.new-object>form input,.new-object textarea,.edit-object>form>input,.edit-object textarea,.edit-object select {
     width :100%;
-    margin: 10px;
+    margin: 5px;
     padding: 10px 10px;
 }
 
@@ -134,19 +144,26 @@ header {
     border-radius: 5%;
 
 }
-.edit-object label{
+.edit-object label {
     padding:0px;
     margin:0px;
     font-size:12px;
     width:100%;   
 }
-.edit-object .select-group-item{
+.edit-object .select-group-item,.new-object .select-group-item{
     display: flex;
     flex-direction: row; 
     align-items: baseline;
+    margin:5px;
     width:100%;   
 }
 
+.new-object label {
+    padding:10px;
+    margin:0px;
+    font-size:12px;
+    width:50%;   
+}
 .button-group{
     display: flex;
     flex-direction: row; 
@@ -155,9 +172,11 @@ header {
     width:100%;   
 }
 
-.select-group-item>label,.select-group-item>select {
+.select-group-item>label,.select-group-item>select,.type-select {
+    display: block;
     width:50%;
-    padding:5px; 
+    margin: 0px;
+    padding: 10px 10px;
 }
 .tooltip {
     position:relative;
@@ -237,6 +256,12 @@ header {
 .yellow-light{
     background-color: #FFB96D;
 }
+.white {
+    background-color: #FFF;
+}
+.black {
+    background-color: #000;
+}
 
 .white-foreground {
     color: #FFF;
@@ -244,12 +269,22 @@ header {
 .black-foreground {
     color: #000;
 }
-.white {
-    background-color: #FFF;
+.green-foreground {
+    color: #0CA947;/*rgb(114, 190, 104), chartreuse, darkgreen  forestgreen*/
 }
-.black {
-    background-color: #000;
+.blue-foreground {
+    color: #106E92;/*dodgerblue,deepskyblue, cornflowerblue*/
 }
+.red-foreground {
+    color: #E93611;/*crimson; firebrick,red,darkred*/
+}
+.yellow-foreground {
+    color: #E98111;
+}
+.pink-foreground {
+    color: fuchsia;/*darlorchid, deeppink*/
+}
+
 .card{
     background-color: rgb(240, 232, 200);
     color: black;
@@ -265,10 +300,10 @@ header {
 .card-title {
     padding: 15px;
 }
-.card .info {
-    justify-content: flex-start;
+/*.card .info {
+    justify-content: space-between;
     padding: 15px;
-}
+}*/
 .cardtype {
     padding-left: 5px;
 }
@@ -287,6 +322,13 @@ header {
 }
 .questioning {
     color: rgb(204, 99, 29);
+}
+
+.question{
+    font-weight: bold;
+}
+.answer{
+    font-size: 12px;
 }
 
 footer {

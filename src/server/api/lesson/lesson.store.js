@@ -43,7 +43,7 @@
                 return;
             }
 
-            log.debug('New lesson has been successfully saved with id %d.', lesson.id);
+            log.debug('New lesson has been successfully saved with id %d.', newlesson.id);
             onSuccess(newlesson);
         });
     };

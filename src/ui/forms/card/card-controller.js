@@ -6,28 +6,32 @@
         .module("learnApp")
         .controller('cardController', cardController);
 
-    function cardController($scope,$rootScope,$stateParams,cardApiService) {
+    function cardController($scope,$rootScope,$stateParams,cardApiService,lessonApiService) {
         var cardCtrl = this;
         
         cardCtrl.initController = function(){
             $rootScope.isAdd = false;
             $rootScope.isEdit = false;
             $rootScope.iserror = false;
-            cardCtrl.editCard = new Card();
-            cardApiService.getOneLesson($stateParams.lessonid)
-            .when((result => {
+            cardCtrl.ismulti = false;
+            cardCtrl.types = getTypesOfCard();
+            cardCtrl.editCard = new Card($stateParams.categoryid,$stateParams.lessonid);
+
+            var resultPromise = lessonApiService.getOneLesson($stateParams.categoryid,$stateParams.lessonid)
+            resultPromise.then(function(result){
                 cardCtrl.lesson  = result.data;
-            }))
+            })
             .catch(error => {
-                WriteErrorMsg(result.data,"Loading of lesson's data failed");
+                WriteError(error.data,"Loading of lesson's data failed");
             });
-            cardApiService.getAllCards($stateParams.lessonid)
-            .when((result) => {
+            cardApiService.getAllCards($stateParams.categoryid,$stateParams.lessonid,$rootScope.searchString)
+            .then((result) => {
                 cardCtrl.cards = result.data;
             })
             .catch((error) => {
-                writeError(result.data,"Loading of all cards failed")
+                writeError(error.data,"Loading of all cards failed")
             });
+            
         }
         cardCtrl.initController();
 
@@ -35,29 +39,57 @@
            return (typeOfCard == "MULTI-CHOICE");
         }
 
+        cardCtrl.onEdit = function(card){
+            $rootScope.isEdit=true;
+            cardCtrl.editCard = card;
+            cardCtrl.changeTypeOfCard();  
+        }
+
+        cardCtrl.onDelete = function(card){
+            var promise = cardApiService.deleteCard(card.id);
+            promise.then((result)=>{
+                cardCtrl.initController();
+                $rootScope.iserror = false;
+            })
+            .catch((result)=>{
+                writeError(result.data,'Deleting of Card failed');
+            })
+        }
+
         cardCtrl.replaceXXX = function(text){
              var t = text;
-             var v = t.replace("XXX","__________");
+             var v = t.replace("XXX","_____");
              return v;
+        }
+
+        cardCtrl.changeTypeOfCard = function(){
+            cardCtrl.ismulti =cardCtrl.isMulti(cardCtrl.editCard.typeOfCard);    
         }
 
         cardCtrl.submit= function(form) {
             form.$setDirty();
             if(!form.$valid) return;
-            
-            cardApiService.postCard(cardCtrl.editCard)
-            .when((result)=>{
-                catrdCtrl.initController();
-                iserror = false;
+            var promise; 
+            if($rootScope.isEdit){
+                promise = cardApiService.putCard(cardCtrl.editCard);
+            }else{
+                promise = cardApiService.postCard($stateParams.categoryid,$stateParams.lessonid,cardCtrl.editCard);
+            }
+            promise.then((result)=>{
+                cardCtrl.initController();
+                $rootScope.iserror = false;
             })
             .catch((result)=>{
-                WriteErrorMsg(result.data,'Saving of Card failed');
+                writeError(result.data,'Saving of Card failed');
             })
         }
-
-        function WriteErrorMsg(errorMsg,errTitle){
+       
+        function writeError(errMsg,title){
+            var errmsgdiv = $('#error-msg');
+            errmsgdiv.html(errMsg);
+            console.log(title);
+            console.log(errMsg);
             $rootScope.iserror = true;
-            ("#error-msg").html(errTitle+": "+errorMsg);
         }
 
     }

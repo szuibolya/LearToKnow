@@ -58,7 +58,7 @@
      function getlessonById(request, response) {
             //request.params  contains parameters that is before ? (for example :id)
             let id = parseInt(request.params.id, 10);
-            if (id === undefined || isNaN(id)) {
+            if (id === undefined || isNaN(id)) { 
                 response.status(400).send('Wrong ID parameter!');
                 return;
             }
@@ -82,12 +82,14 @@
                 return;
             }
 
-            store.addlesson(new Sanitizedlesson(lesson._id,lesson.id, categoryid, lesson.name, lesson.description, lesson.style, lesson.checked), (newlesson) => {
+            store.addlesson(new Sanitizedlesson(lesson._id,lesson.id, categoryid, lesson.name, lesson.description, lesson.style, lesson.checked),
+             (newlesson) => {
                 response.status(200).json(newlesson); 
             }, (error) => {
                 response.status(500).send(error);
             });
     }
+
     function modifylesson(request, response){
             let lesson = request.body;
             let id = parseInt(request.params.id, 10);
@@ -96,7 +98,8 @@
                 return;
             }
 
-            store.modlesson(new Sanitizedlesson(lesson._id,lesson.id, lesson.categoryId, lesson.name, lesson.description, lesson.style, lesson.checked,lesson.lessons,lesson.creationDate), (error,docs) => {
+            store.modlesson(new Sanitizedlesson(lesson._id,lesson.id, lesson.categoryId, lesson.name, lesson.description, lesson.style, lesson.checked,lesson.lessons,lesson.creationDate), 
+            (error,docs) => {
                 if(error){
                     response.status(500).send(error);
                 }else{
